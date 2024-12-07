@@ -24,9 +24,33 @@
             padding: 20px;
         }
 
-        .search-container {
-            margin: 20px 0;
-        }
+       .search-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.champion-select {
+    flex: 1;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #333;
+    background: #1a1a1f;
+    color: #fff;
+    border-radius: 4px;
+    min-width: 200px;
+}
+
+#championSearch {
+    flex: 2;
+    min-width: 200px;
+}
+
+.champion-select option {
+    background: #1a1a1f;
+    color: #fff;
+    padding: 8px;
+}
 
         #championSearch {
             width: 100%;
@@ -100,10 +124,12 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="search-container">
-            <input type="text" id="championSearch" placeholder="Search for a champion...">
-        </div>
+   <div class="search-container">
+    <select id="championSelect" class="champion-select">
+        <option value="">Select a Champion</option>
+    </select>
+    <input type="text" id="championSearch" placeholder="Or search for a champion...">
+</div>
         <div class="tabs">
             <button class="tab active" data-tab="overview">Overview</button>
             <button class="tab" data-tab="abilities">Abilities</button>
@@ -121,6 +147,52 @@
     </div>
 
     <script>
+       // Champion list - all LoL champions in alphabetical order
+const championList = [
+    "Aatrox", "Ahri", "Akali", "Akshan", "Alistar", "Amumu", "Anivia", "Annie", "Aphelios", "Ashe", "Aurelion Sol", "Azir",
+    "Bard", "Bel'Veth", "Blitzcrank", "Brand", "Braum", "Briar",
+    "Caitlyn", "Camille", "Cassiopeia", "Cho'Gath", "Corki",
+    "Darius", "Diana", "Dr. Mundo", "Draven",
+    "Ekko", "Elise", "Evelynn", "Ezreal",
+    "Fiddlesticks", "Fiora", "Fizz",
+    "Galio", "Gangplank", "Garen", "Gnar", "Gragas", "Graves", "Gwen",
+    "Hecarim", "Heimerdinger", "Hwei",
+    "Illaoi", "Irelia", "Ivern",
+    "Janna", "Jarvan IV", "Jax", "Jayce", "Jhin", "Jinx",
+    "K'Sante", "Kai'Sa", "Kalista", "Karma", "Karthus", "Kassadin", "Katarina", "Kayle", "Kayn", "Kennen", "Kha'Zix", "Kindred", "Kled", "Kog'Maw",
+    "LeBlanc", "Lee Sin", "Leona", "Lillia", "Lissandra", "Lucian", "Lulu", "Lux",
+    "Malphite", "Malzahar", "Maokai", "Master Yi", "Milio", "Miss Fortune", "Mordekaiser", "Morgana",
+    "Naafiri", "Nami", "Nasus", "Nautilus", "Neeko", "Nidalee", "Nilah", "Nocturne", "Nunu & Willump",
+    "Olaf", "Orianna", "Ornn",
+    "Pantheon", "Poppy", "Pyke",
+    "Qiyana", "Quinn",
+    "Rakan", "Rammus", "Rek'Sai", "Rell", "Renata Glasc", "Renekton", "Rengar", "Riven", "Rumble", "Ryze",
+    "Samira", "Sejuani", "Senna", "Seraphine", "Sett", "Shaco", "Shen", "Shyvana", "Singed", "Sion", "Sivir", "Skarner", "Sona", "Soraka", "Swain", "Sylas", "Syndra",
+    "Tahm Kench", "Taliyah", "Talon", "Taric", "Teemo", "Thresh", "Tristana", "Trundle", "Tryndamere", "Twisted Fate", "Twitch",
+    "Udyr", "Urgot",
+    "Varus", "Vayne", "Veigar", "Vel'Koz", "Vex", "Vi", "Viego", "Viktor", "Vladimir", "Volibear",
+    "Warwick", "Wukong",
+    "Xayah", "Xerath", "Xin Zhao",
+    "Yasuo", "Yone", "Yorick", "Yuumi",
+    "Zac", "Zed", "Zeri", "Ziggs", "Zilean", "Zoe", "Zyra"
+];
+
+// Populate dropdown
+const championSelect = document.getElementById('championSelect');
+championList.forEach(champion => {
+    const option = document.createElement('option');
+    option.value = champion.toLowerCase().replace(/[^a-z]/g, ''); // Remove special characters
+    option.textContent = champion;
+    championSelect.appendChild(option);
+});
+
+// Add event listener for dropdown
+championSelect.addEventListener('change', (e) => {
+    if (e.target.value) {
+        showChampionData(e.target.value);
+        searchInput.value = ''; // Clear search input
+    }
+});
         const championData = {
             fizz: {
                 overview: `
