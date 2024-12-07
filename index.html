@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoL Champion Guide</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #0a0a0f;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .search-container {
+            margin: 20px 0;
+        }
+
+        #championSearch {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 2px solid #333;
+            background: #1a1a1f;
+            color: #fff;
+            border-radius: 4px;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            background: #1a1a1f;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+        .tab.active {
+            background: #3498db;
+        }
+
+        .content {
+            background: #1a1a1f;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        .content div {
+            display: none;
+        }
+
+        .content div.active {
+            display: block;
+        }
+
+        .ability {
+            margin: 10px 0;
+            padding: 10px;
+            background: #252530;
+            border-radius: 4px;
+        }
+
+        .champion-not-found {
+            text-align: center;
+            padding: 20px;
+            color: #ff5555;
+        }
+
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="championSearch" placeholder="Search for a champion...">
+        </div>
+        <div class="tabs">
+            <button class="tab active" data-tab="overview">Overview</button>
+            <button class="tab" data-tab="abilities">Abilities</button>
+            <button class="tab" data-tab="builds">Builds</button>
+            <button class="tab" data-tab="counters">Counters</button>
+            <button class="tab" data-tab="advanced">Advanced</button>
+        </div>
+        <div class="content">
+            <div id="overview" class="active"></div>
+            <div id="abilities"></div>
+            <div id="builds"></div>
+            <div id="counters"></div>
+            <div id="advanced"></div>
+        </div>
+    </div>
+
+    <script>
+        const championData = {
+            fizz: {
+                overview: `
+                    <h2>Fizz - The Tidal Trickster</h2>
+                    <p>Role: Assassin/Fighter</p>
+                    <p>Lane: Mid (primarily)</p>
+                    <p>Damage Type: Magic</p>
+                    <p>Release Date: November 15, 2011</p>
+                `,
+                abilities: `
+                    <h3>Passive - Nimble Fighter</h3>
+                    <div class="ability">Reduces unit collision and basic attack damage from enemies</div>
+                    
+                    <h3>Q - Urchin Strike</h3>
+                    <div class="ability">Dash that deals damage and applies on-hit effects</div>
+                    
+                    <h3>W - Seastone Trident</h3>
+                    <div class="ability">Empowered auto-attacks with DoT and active damage</div>
+                    
+                    <h3>E - Playful/Trickster</h3>
+                    <div class="ability">Two-part jump that makes Fizz untargetable</div>
+                    
+                    <h3>R - Chum the Waters</h3>
+                    <div class="ability">Throws a shark that knocks up and slows targets</div>
+                `,
+                builds: `
+                    <h3>Core Items</h3>
+                    <ul>
+                        <li>Hextech Rocketbelt (Mythic)</li>
+                        <li>Sorcerer's Shoes</li>
+                        <li>Zhonya's Hourglass</li>
+                        <li>Lich Bane</li>
+                    </ul>
+                    
+                    <h3>Situational Items</h3>
+                    <ul>
+                        <li>Shadowflame (vs shields)</li>
+                        <li>Void Staff (vs MR)</li>
+                        <li>Rabadon's Deathcap (when ahead)</li>
+                        <li>Mejai's Soulstealer (if snowballing)</li>
+                    </ul>
+                `,
+                counters: `
+                    <h3>Strong Against</h3>
+                    <ul>
+                        <li>Immobile mages (Xerath, Lux, Vel'Koz)</li>
+                        <li>Squishy ADCs</li>
+                        <li>Champions reliant on skillshots</li>
+                    </ul>
+                    
+                    <h3>Weak Against</h3>
+                    <ul>
+                        <li>Vladimir (can pool Fizz ult)</li>
+                        <li>Kassadin (magic shield, mobility)</li>
+                        <li>Galio (tanky, CC, anti-magic)</li>
+                        <li>Lissandra (point-click CC)</li>
+                    </ul>
+                `,
+                advanced: `
+                    <h3>Advanced Combos</h3>
+                    <ul>
+                        <li>R > Q > W > Auto > E > Auto</li>
+                        <li>Q > W > E (trading combo)</li>
+                        <li>E > R > W > Q (surprise engage)</li>
+                    </ul>
+                    
+                    <h3>Tips</h3>
+                    <ul>
+                        <li>Use E to bait important enemy cooldowns</li>
+                        <li>R can be cast during Q animation</li>
+                        <li>Ward enemy raptors for roaming opportunities</li>
+                        <li>E can dodge turret shots</li>
+                    </ul>
+                `
+            }
+            // Add more champions here following the same structure
+        };
+
+        const searchInput = document.getElementById('championSearch');
+        const tabs = document.querySelectorAll('.tab');
+        const contentDivs = document.querySelectorAll('.content div');
+
+        function showChampionData(champion) {
+            const champData = championData[champion.toLowerCase()];
+            if (!champData) {
+                document.querySelector('.content').innerHTML = '<div class="champion-not-found">Champion not found</div>';
+                return;
+            }
+
+            document.getElementById('overview').innerHTML = champData.overview;
+            document.getElementById('abilities').innerHTML = champData.abilities;
+            document.getElementById('builds').innerHTML = champData.builds;
+            document.getElementById('counters').innerHTML = champData.counters;
+            document.getElementById('advanced').innerHTML = champData.advanced;
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.trim().toLowerCase();
+            if (searchTerm in championData) {
+                showChampionData(searchTerm);
+            }
+        });
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.getAttribute('data-tab');
+                
+                tabs.forEach(t => t.classList.remove('active'));
+                contentDivs.forEach(div => div.classList.remove('active'));
+                
+                tab.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Initialize with Fizz data
+        showChampionData('fizz');
+    </script>
+</body>
+</html>
