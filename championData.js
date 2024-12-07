@@ -149,3 +149,227 @@ Object.assign(championData, {
         `
     }
 });
+,
+    leblanc: {
+        overview: `
+            <h2>LeBlanc - The Deceiver</h2>
+            <p>Role: Assassin/Mage</p>
+            <p>Lane: Mid</p>
+            <p>Damage Type: Magic</p>
+            <p>Release Date: November 2, 2010</p>
+        `,
+        abilities: `
+            <h3>Passive - Mirror Image</h3>
+            <div class="ability">When falling below 40% HP, becomes invisible and creates a mirror image</div>
+            
+            <h3>Q - Sigil of Malice</h3>
+            <div class="ability">Marks target with sigil that can be detonated by other abilities</div>
+            
+            <h3>W - Distortion</h3>
+            <div class="ability">Dashes to location dealing damage, can return to original position</div>
+            
+            <h3>E - Ethereal Chains</h3>
+            <div class="ability">Launches chains that root target if they stay in range</div>
+            
+            <h3>R - Mimic</h3>
+            <div class="ability">Creates empowered version of last basic ability cast</div>
+        `,
+        builds: `
+            <h3>Core Items</h3>
+            <ul>
+                <li>Luden's Tempest (Mythic)</li>
+                <li>Sorcerer's Shoes</li>
+                <li>Shadowflame</li>
+                <li>Rabadon's Deathcap</li>
+            </ul>
+            
+            <h3>Situational Items</h3>
+            <ul>
+                <li>Void Staff</li>
+                <li>Zhonya's Hourglass</li>
+                <li>Banshee's Veil</li>
+                <li>Mejai's Soulstealer</li>
+            </ul>
+        `,
+        counters: `
+            <h3>Strong Against</h3>
+            <ul>
+                <li>Immobile Mages</li>
+                <li>Squishy Carries</li>
+                <li>Champions without CC</li>
+            </ul>
+            
+            <h3>Weak Against</h3>
+            <ul>
+                <li>Galio</li>
+                <li>Kassadin</li>
+                <li>Lissandra</li>
+                <li>Malzahar</li>
+            </ul>
+        `,
+        advanced: `
+            <h3>Advanced Combos</h3>
+            <ul>
+                <li>W > Q > R(Q) > E (Burst Combo)</li>
+                <li>E > Q > R(Q) > W (Chain Combo)</li>
+                <li>W > R(W) > Q > E (Double Dash)</li>
+            </ul>
+            
+            <h3>Tips</h3>
+            <ul>
+                <li>Use W to fake engages</li>
+                <li>Chain R with different abilities based on situation</li>
+                <li>Return W can dodge crucial abilities</li>
+                <li>Use passive clone to block skillshots</li>
+            </ul>
+        `
+    },
+    syndra: {
+        overview: `
+            <h2>Syndra - The Dark Sovereign</h2>
+            <p>Role: Mage</p>
+            <p>Lane: Mid</p>
+            <p>Damage Type: Magic</p>
+            <p>Release Date: September 13, 2012</p>
+        `,
+        abilities: `
+            <h3>Passive - Transcendent</h3>
+            <div class="ability">Each ability gains additional effects at max rank</div>
+            
+            <h3>Q - Dark Sphere</h3>
+            <div class="ability">Creates a dark sphere dealing magic damage</div>
+            
+            <h3>W - Force of Will</h3>
+            <div class="ability">Grabs and throws spheres or minions at target area</div>
+            
+            <h3>E - Scatter the Weak</h3>
+            <div class="ability">Knocks enemies and spheres back, stunning if hit by sphere</div>
+            
+            <h3>R - Unleashed Power</h3>
+            <div class="ability">Launches all dark spheres at target enemy champion</div>
+        `,
+        builds: `
+            <h3>Core Items</h3>
+            <ul>
+                <li>Luden's Tempest (Mythic)</li>
+                <li>Sorcerer's Shoes</li>
+                <li>Shadowflame</li>
+                <li>Rabadon's Deathcap</li>
+            </ul>
+            
+            <h3>Situational Items</h3>
+            <ul>
+                <li>Zhonya's Hourglass</li>
+                <li>Void Staff</li>
+                <li>Banshee's Veil</li>
+                <li>Cosmic Drive</li>
+            </ul>
+        `,
+        counters: `
+            <h3>Strong Against</h3>
+            <ul>
+                <li>Immobile Mages</li>
+                <li>Short-Range Champions</li>
+                <li>Champions without Dashes</li>
+            </ul>
+            
+            <h3>Weak Against</h3>
+            <ul>
+                <li>Fizz</li>
+                <li>Zed</li>
+                <li>Katarina</li>
+                <li>Yasuo</li>
+            </ul>
+        `,
+        advanced: `
+            <h3>Advanced Combos</h3>
+            <ul>
+                <li>Q > E (Basic Stun)</li>
+                <li>Q > W > E > R (Full Combo)</li>
+                <li>E > Q (Quick Stun)</li>
+            </ul>
+            
+            <h3>Tips</h3>
+            <ul>
+                <li>Maintain sphere count for ultimate</li>
+                <li>Use E > Q for faster stun</li>
+                <li>Position spheres for zone control</li>
+                <li>R can be used mid-combo</li>
+            </ul>
+        `
+    },
+    yasuo: {
+        overview: `
+            <h2>Yasuo - The Unforgiven</h2>
+            <p>Role: Fighter/Assassin</p>
+            <p>Lane: Mid/Top</p>
+            <p>Damage Type: Physical</p>
+            <p>Release Date: December 13, 2013</p>
+        `,
+        abilities: `
+            <h3>Passive - Way of the Wanderer</h3>
+            <div class="ability">Double critical strike chance and generates shield with movement</div>
+            
+            <h3>Q - Steel Tempest</h3>
+            <div class="ability">Thrusting strike that can create whirlwind on third cast</div>
+            
+            <h3>W - Wind Wall</h3>
+            <div class="ability">Projects wall blocking enemy projectiles</div>
+            
+            <h3>E - Sweeping Blade</h3>
+            <div class="ability">Dashes through target, dealing damage</div>
+            
+            <h3>R - Last Breath</h3>
+            <div class="ability">Teleports to airborne enemy champion dealing damage</div>
+        `,
+        builds: `
+            <h3>Core Items</h3>
+            <ul>
+                <li>Immortal Shieldbow (Mythic)</li>
+                <li>Berserker's Greaves</li>
+                <li>Infinity Edge</li>
+                <li>Bloodthirster</li>
+            </ul>
+            
+            <h3>Situational Items</h3>
+            <ul>
+                <li>Death's Dance</li>
+                <li>Guardian Angel</li>
+                <li>Mortal Reminder</li>
+                <li>Spirit Visage</li>
+            </ul>
+        `,
+        counters: `
+            <h3>Strong Against</h3>
+            <ul>
+                <li>Projectile-based Champions</li>
+                <li>Immobile Mages</li>
+                <li>ADCs</li>
+            </ul>
+            
+            <h3>Weak Against</h3>
+            <ul>
+                <li>Annie</li>
+                <li>Pantheon</li>
+                <li>Renekton</li>
+                <li>Garen</li>
+            </ul>
+        `,
+        advanced: `
+            <h3>Advanced Combos</h3>
+            <ul>
+                <li>E > Q (Beyblade)</li>
+                <li>EQ > Flash (Keyblade)</li>
+                <li>Q3 > R > Q > E > Q (Airblade)</li>
+            </ul>
+            
+            <h3>Tips</h3>
+            <ul>
+                <li>Track enemy CC cooldowns</li>
+                <li>Use E on minions for mobility</li>
+                <li>Time Wind Wall carefully</li>
+                <li>Stack Q before objectives</li>
+            </ul>
+        `
+    }
+});
